@@ -1,0 +1,59 @@
+@keyframes buttonOpen {
+	from {
+		margin-left: -550px;
+	}
+	to { 
+		margin-left: 0;
+	}
+}
+
+@keyframes mainImg {
+	from { transform: scale(1.2); }
+	to { transform: scale(1); }
+}
+
+@keyframes coverImg {
+	from { 
+		left: 0%; 
+		width: 150%; 
+	}
+
+	to { left: -100%; 
+		width: 0%;
+	}
+}
+
+@keyframes opacity-obj {
+		from {opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes bg-text-left {
+	from { transform: translateY(-150px); }
+	to { transform: translateY(0); }
+}
+
+@keyframes bg-text-right {
+	from { transform: translateY(150px); }
+	to { transform: translateY(0); }
+}
+
+
+@keyframes up-text-1 {
+	from { transform: translateY(50px); }
+	to { transform: translateY(0); }
+}
+
+@keyframes up-text-2 {
+	from { transform: translateY(70px); }
+	to { transform: translateY(0); }
+}
+
+@keyframes up-text {
+	from { transform: translateY(15px); }
+	to { transform: translateY(0); }
+}
+
+
+
+

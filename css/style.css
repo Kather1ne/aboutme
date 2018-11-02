@@ -1,0 +1,225 @@
+/*colors*/
+/* font size */
+/* font family */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+.social {
+  background: #fff;
+  padding: 0 10px;
+  position: absolute;
+  top: 100px;
+  left: 12px;
+  animation: up-text 0.5s ease 2s forwards;
+  z-index: 10;
+}
+.social-item {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0;
+  animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
+}
+.social-item:nth-child(1) {
+  background: url("../img/whatsapp-g.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.social-item:nth-child(2) {
+  background: url("../img/instagram-g.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.social-item:nth-child(3) {
+  background: url("../img/telegram-g.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.social-item:nth-child(1):hover {
+  background: url("../img/whatsapp.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.social-item:nth-child(2):hover {
+  background: url("../img/instagram.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.social-item:nth-child(3):hover {
+  background: url("../img/telegram.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.header {
+  margin-left: calc((50vw - 340px)/2 - 60px);
+  margin-top: 30px;
+  display: flex;
+  align-items: top;
+  position: absolute;
+  opacity: 0;
+  animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
+}
+.header-menu span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin-bottom: 6px;
+  background: #000;
+}
+.header-name {
+  margin-left: 50px;
+  font-weight: 700;
+}
+.block-introduction {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+.block-introduction > div {
+  width: 50%;
+}
+.block-introduction .right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block-introduction .right::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background: #cecece;
+  position: absolute;
+  left: 30px;
+  z-index: -1;
+  opacity: 0;
+  animation: opacity-obj 1s ease 2s forwards;
+}
+.block-introduction .content {
+  width: 360px;
+}
+.block-introduction .content .text-bg {
+  font-size: 5.609em;
+  font-family: 'Playfair Display', serif;
+  opacity: 0.05;
+  margin-left: -50px;
+  z-index: -1;
+  white-space: nowrap;
+}
+.block-introduction .content .text-bg .left-tx,
+.block-introduction .content .text-bg .right-tx {
+  font: inherit;
+  display: inline-block;
+  opacity: 0;
+}
+.block-introduction .content .text-bg .left-tx {
+  transform: translateY(-150px);
+  animation: bg-text-left 1.5s ease-out forwards, opacity-obj 2s ease forwards;
+}
+.block-introduction .content .text-bg .right-tx {
+  transform: translateY(150px);
+  animation: bg-text-right 1.5s ease-out forwards, opacity-obj 2s ease forwards;
+}
+.block-introduction .content .title {
+  position: relative;
+  font-size: 1.777em;
+  line-height: 1.07;
+  font-weight: 700;
+  margin-top: -60px;
+}
+.block-introduction .content .title span {
+  font-size: 1em;
+  font: inherit;
+}
+.block-introduction .content .title .colorfull {
+  color: #f44336;
+  display: block;
+}
+.block-introduction .content .title .text-up {
+  display: inline-block;
+  opacity: 0;
+}
+.block-introduction .content .title .text-up:nth-child(1) {
+  animation: up-text-1 1s ease-out 1.2s forwards, opacity-obj 2s ease 1.2s forwards;
+}
+.block-introduction .content .title .text-up:nth-child(2) {
+  animation: up-text-2 1s ease-out 1.2s forwards, opacity-obj 2s ease 1.2s forwards;
+}
+.block-introduction .content .intro {
+  font-size: 1em;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
+}
+.block-introduction .content .intro .hello {
+  margin-bottom: 10px;
+  font-size: 1em;
+  display: block;
+}
+.block-introduction .content .button {
+  background: #f44336;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: 0px 5px 15px -5px #ab281f;
+  cursor: pointer;
+  transition: all 1s ease;
+  opacity: 0;
+  animation: opacity-obj 1s ease 2s forwards, mainImg 1s ease 2s forwards;
+}
+.block-introduction .content .button::after {
+  content: "\027A4";
+  font-size: 20px;
+  color: #fff;
+  line-height: 50px;
+  padding-left: 5px;
+}
+.block-introduction .content .button:hover {
+  width: 300px;
+}
+.block-introduction .content .button:hover::after {
+  content: "Продолжим знакомство?";
+  font-size: 1em;
+  color: #fff;
+  line-height: 50px;
+  padding-left: 5px;
+  opacity: 0;
+  font-weight: 600;
+  animation: buttonOpen 1s ease forwards, opacity-obj 1s ease forwards;
+}
+.block-introduction .left {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.block-introduction .left img {
+  height: 100%;
+  animation: mainImg 2s ease-out 1s;
+}
+.block-introduction .left .coverImg {
+  width: 150%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: coverImg 2s linear forwards 1s;
+  pointer-events: none;
+}
