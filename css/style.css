@@ -256,7 +256,7 @@
   }
   .block-introduction .content {
     width: 80%;
-    max-width: 600px;
+    max-width: 470px;
   }
   .block-introduction .content .text-bg {
     display: none;
@@ -285,11 +285,18 @@
   .block-introduction .right::before {
     content: none;
   }
+  .block-introduction .left .coverImg {
+    width: 110%;
+    height: 120%;
+    background: #fff;
+    position: absolute;
+    top: -20px;
+  }
 }
-@media screen and (max-width: 1023px) and (min-width: 390px) {
+@media screen and (max-width: 1023px) and (min-width: 400px) {
   .block-introduction .left img {
     height: auto;
     max-width: 100%;
-    max-height: 360px;
+    max-height: 340px;
   }
 }
