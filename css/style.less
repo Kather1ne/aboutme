@@ -93,21 +93,41 @@
 	position: absolute;
 	opacity: 0;
 	animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
+	z-index: 20;
 
 	&-menu {
 		span {
 			display: block;
-			width: 25px;
+			width: 20px;
 			height: 2px;
 			margin-bottom: 6px;
 			background: #000;
-		}
 
+			&:nth-child(1) {
+				width: 10px;
+			}
+			&:nth-child(3) {
+				width: 15px;
+			}
+		}
 	}
+
 	&-name {
 		margin-left: 50px;
 		font-weight: 700;
 	}
+}
+
+.popup-menu {
+	position: absolute;	
+	width: 50%;
+	padding: ~"calc((50vw - 340px)/2 - 60px)";
+	background: #fff;
+	height: 100%;
+	box-sizing: border-box;
+	z-index: 20;
+	display: none;
+
 }
 
 .block-introduction {
@@ -118,24 +138,24 @@
 	&>div {
 		width: 50%;
 	}
+}
 
-	.right {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+.right {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-		&::before {
-			content: "";
-			width: 2px;
-			height: 100%;
-			background: @grayColor;
-			position: absolute;
-			left: 30px;
-			z-index: -1;
-			opacity: 0;
-			animation: opacity-obj 1s ease 2s forwards;
-		}
+	&::before {
+		content: "";
+		width: 2px;
+		height: 100%;
+		background: @grayColor;
+		position: absolute;
+		left: 30px;
+		z-index: -1;
+		opacity: 0;
+		animation: opacity-obj 1s ease 2s forwards;
 	}
 
 
@@ -251,33 +271,34 @@
 			}
 		}
 	}
+}
 
-	.left {
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
+.left {
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 
-		img {
-			height: 100%;
-			animation: mainImg 2s ease-out 1s; 
+	img {
+		height: 100%;
+		animation: mainImg 2s ease-out 1s; 
 
-		}
-
-		.coverImg {
-			width: 150%;
-			height: 100%;
-			background: #fff;
-			position: absolute;
-			top: 0;
-			left: 0;
-			animation: coverImg 2s linear forwards 1s;
-			pointer-events: none;
-		}
 	}
 
+	.coverImg {
+		width: 150%;
+		height: 100%;
+		background: #fff;
+		position: absolute;
+		top: 0;
+		left: 0;
+		animation: coverImg 2s linear forwards 1s;
+		pointer-events: none;
+	}
 }
+
+
 
 @media screen and (max-width: 1023px) {
 	body {
@@ -299,9 +320,22 @@
 	}
 
 	.header {
-		margin-left: calc(50vw / 2);
 		margin-top: 15px;
+		margin-left: 10%;
+		width: 80%;
 		position: initial;
+
+		&-name {
+			margin-left: ~"calc((80% - 80px) / 2)";
+			margin-top: -3px;
+		}
+	}
+
+	.popup-menu {
+		position: absolute;
+		background: #fff;
+		z-index: 100;
+		padding: 50px 10%;
 	}
 
 	.block-introduction {
@@ -313,6 +347,16 @@
 			width: 100%;
 			height: 300px;
 		}
+	}
+
+
+	.right {
+		order: 2;
+		margin-bottom: 50px;	
+		&::before {
+			content: none;
+		}
+
 
 		.content {
 			width: 80%;
@@ -326,6 +370,14 @@
 				margin-left: 0px;
 				transform: translateX(-50%);
 				z-index: 50;
+
+				.left-tx{					
+					animation: bg-text-left 1.5s ease-out forwards, opacity-obj 2s ease;
+				}
+
+				.right-tx {
+					animation: bg-text-right 1.5s ease-out forwards, opacity-obj 2s ease;
+				}
 			}
 
 			.title {
@@ -345,37 +397,31 @@
 				position: absolute;
 				top: -25px;
 				right: 30px;
-				z-index: 50;
+				z-index: 50;				
 			}
 		}
-
-		.right {
-			order: 2;
-			margin-bottom: 50px;	
-			&::before {
-				content: none;
-			}
-		}
-
-		.left {
-			
-			.coverImg {
-				width: 110%;
-				height: 120%;
-				background: #fff;
-				position: absolute;
-				top: -10%;
-			}
-		}
-
-		@media (min-width: 400px) {
-			.left img {
-				height: auto;
-				max-width: 100%;
-				max-height: 340px;
-			}			
-		}
-
-
 	}
+
+	.left {
+
+		.coverImg {
+			width: 110%;
+			height: 120%;
+			background: #fff;
+			position: absolute;
+			top: -10%;
+		}
+	}
+
+
+	@media (min-width: 400px) {
+		.left img {
+			height: auto;
+			max-width: 100%;
+			max-height: 340px;
+		}			
+	}
+
+
+
 }

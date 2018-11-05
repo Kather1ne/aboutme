@@ -71,17 +71,34 @@
   position: absolute;
   opacity: 0;
   animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
+  z-index: 20;
 }
 .header-menu span {
   display: block;
-  width: 25px;
+  width: 20px;
   height: 2px;
   margin-bottom: 6px;
   background: #000;
 }
+.header-menu span:nth-child(1) {
+  width: 10px;
+}
+.header-menu span:nth-child(3) {
+  width: 15px;
+}
 .header-name {
   margin-left: 50px;
   font-weight: 700;
+}
+.popup-menu {
+  position: absolute;
+  width: 50%;
+  padding: calc((50vw - 340px)/2 - 60px);
+  background: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 20;
+  display: none;
 }
 .block-introduction {
   display: flex;
@@ -91,13 +108,13 @@
 .block-introduction > div {
   width: 50%;
 }
-.block-introduction .right {
+.right {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.block-introduction .right::before {
+.right::before {
   content: "";
   width: 2px;
   height: 100%;
@@ -108,10 +125,10 @@
   opacity: 0;
   animation: opacity-obj 1s ease 2s forwards;
 }
-.block-introduction .content {
+.right .content {
   width: 360px;
 }
-.block-introduction .content .text-bg {
+.right .content .text-bg {
   font-size: 5.609em;
   font-family: 'Playfair Display', serif;
   opacity: 0.05;
@@ -119,58 +136,58 @@
   z-index: -1;
   white-space: nowrap;
 }
-.block-introduction .content .text-bg .left-tx,
-.block-introduction .content .text-bg .right-tx {
+.right .content .text-bg .left-tx,
+.right .content .text-bg .right-tx {
   font: inherit;
   display: inline-block;
   opacity: 0;
 }
-.block-introduction .content .text-bg .left-tx {
+.right .content .text-bg .left-tx {
   transform: translateY(-150px);
   animation: bg-text-left 1.5s ease-out forwards, opacity-obj 2s ease forwards;
 }
-.block-introduction .content .text-bg .right-tx {
+.right .content .text-bg .right-tx {
   transform: translateY(150px);
   animation: bg-text-right 1.5s ease-out forwards, opacity-obj 2s ease forwards;
 }
-.block-introduction .content .title {
+.right .content .title {
   position: relative;
   font-size: 1.777em;
   line-height: 1.07;
   font-weight: 700;
   margin-top: -60px;
 }
-.block-introduction .content .title span {
+.right .content .title span {
   font-size: 1em;
   font: inherit;
 }
-.block-introduction .content .title .colorfull {
+.right .content .title .colorfull {
   color: #f44336;
   display: block;
 }
-.block-introduction .content .title .text-up {
+.right .content .title .text-up {
   display: inline-block;
   opacity: 0;
 }
-.block-introduction .content .title .text-up:nth-child(1) {
+.right .content .title .text-up:nth-child(1) {
   animation: up-text-1 1s ease-out 1.2s forwards, opacity-obj 2s ease 1.2s forwards;
 }
-.block-introduction .content .title .text-up:nth-child(2) {
+.right .content .title .text-up:nth-child(2) {
   animation: up-text-2 1s ease-out 1.2s forwards, opacity-obj 2s ease 1.2s forwards;
 }
-.block-introduction .content .intro {
+.right .content .intro {
   font-size: 1em;
   margin-top: 30px;
   margin-bottom: 50px;
   opacity: 0;
   animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
 }
-.block-introduction .content .intro .hello {
+.right .content .intro .hello {
   margin-bottom: 10px;
   font-size: 1em;
   display: block;
 }
-.block-introduction .content .button {
+.right .content .button {
   background: #f44336;
   width: 50px;
   height: 50px;
@@ -182,17 +199,17 @@
   opacity: 0;
   animation: opacity-obj 1s ease 2s forwards, mainImg 1s ease 2s forwards;
 }
-.block-introduction .content .button::after {
+.right .content .button::after {
   content: "\027A4";
   font-size: 20px;
   color: #fff;
   line-height: 50px;
   padding-left: 5px;
 }
-.block-introduction .content .button:hover {
+.right .content .button:hover {
   width: 300px;
 }
-.block-introduction .content .button:hover::after {
+.right .content .button:hover::after {
   content: "Продолжим знакомство?";
   font-size: 1em;
   color: #fff;
@@ -202,18 +219,18 @@
   font-weight: 600;
   animation: buttonOpen 1s ease forwards, opacity-obj 1s ease forwards;
 }
-.block-introduction .left {
+.left {
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.block-introduction .left img {
+.left img {
   height: 100%;
   animation: mainImg 2s ease-out 1s;
 }
-.block-introduction .left .coverImg {
+.left .coverImg {
   width: 150%;
   height: 100%;
   background: #fff;
@@ -241,9 +258,20 @@
     margin-top: 20px;
   }
   .header {
-    margin-left: calc(25vw);
     margin-top: 15px;
+    margin-left: 10%;
+    width: 80%;
     position: initial;
+  }
+  .header-name {
+    margin-left: calc((80% - 80px) / 2);
+    margin-top: -3px;
+  }
+  .popup-menu {
+    position: absolute;
+    background: #fff;
+    z-index: 100;
+    padding: 50px 10%;
   }
   .block-introduction {
     height: auto;
@@ -254,11 +282,18 @@
     width: 100%;
     height: 300px;
   }
-  .block-introduction .content {
+  .right {
+    order: 2;
+    margin-bottom: 50px;
+  }
+  .right::before {
+    content: none;
+  }
+  .right .content {
     width: 80%;
     max-width: 470px;
   }
-  .block-introduction .content .text-bg {
+  .right .content .text-bg {
     font-size: 3.157em;
     position: absolute;
     top: -190px;
@@ -267,31 +302,30 @@
     transform: translateX(-50%);
     z-index: 50;
   }
-  .block-introduction .content .title {
+  .right .content .text-bg .left-tx {
+    animation: bg-text-left 1.5s ease-out forwards, opacity-obj 2s ease;
+  }
+  .right .content .text-bg .right-tx {
+    animation: bg-text-right 1.5s ease-out forwards, opacity-obj 2s ease;
+  }
+  .right .content .title {
     font-size: 1.33em;
     line-height: 1.07;
     margin-top: 0px;
   }
-  .block-introduction .content .intro {
+  .right .content .intro {
     font-size: 0.85em;
     line-height: 1.3;
     margin-top: 30px;
     margin-bottom: 0px;
   }
-  .block-introduction .content .button {
+  .right .content .button {
     position: absolute;
     top: -25px;
     right: 30px;
     z-index: 50;
   }
-  .block-introduction .right {
-    order: 2;
-    margin-bottom: 50px;
-  }
-  .block-introduction .right::before {
-    content: none;
-  }
-  .block-introduction .left .coverImg {
+  .left .coverImg {
     width: 110%;
     height: 120%;
     background: #fff;
@@ -300,7 +334,7 @@
   }
 }
 @media screen and (max-width: 1023px) and (min-width: 400px) {
-  .block-introduction .left img {
+  .left img {
     height: auto;
     max-width: 100%;
     max-height: 340px;
