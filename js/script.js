@@ -7,7 +7,7 @@ $(function(){
 			}).addClass('open');
 			$('.popup-menu').animate({
 				left: '0'},
-				700, function() {
+				1000, function() {
 					/* stuff to do after animation is complete */
 				});
 		}
