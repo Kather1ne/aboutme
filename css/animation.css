@@ -54,6 +54,26 @@
 	to { transform: translateY(0); }
 }
 
+@keyframes burger-1 {
+	0% { width: 15px; }
+	33% { width: 5px; }
+	66% { width: 20px; }
+	100% { width: 10px; }
+}
+
+@keyframes burger-2 {
+	0% { width: 10px; }
+	33% { width: 15px; }
+	66% { width: 5px; }
+	100% { width: 20px; }
+}
+
+@keyframes burger-3 {
+	0% { width: 5px; }
+	33% { width: 20px; }
+	66% { width: 10px; }
+	100% { width: 15px; }
+}
 
 
 
