@@ -346,6 +346,17 @@ br::selection {
     background: #fff;
     z-index: 100;
     padding: 50px 10%;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: none;
+    width: 100%;
+  }
+  .popup-menu .menu-links,
+  .popup-menu .contactme {
+    width: 100%;
+  }
+  .popup-menu .contactme > div {
+    margin: 0 auto 10px;
   }
   .block-introduction {
     height: auto;
