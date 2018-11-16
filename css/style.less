@@ -29,79 +29,76 @@ br::selection, {
 	color: #fff;
 }
 
-.social {
-	background: #fff;
-	padding: 0 10px;
-	position: absolute;
-	top: 100px;
-	left: 12px;
-	animation: up-text 0.5s ease 2s forwards;
-	z-index: 10;
+.page-content {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 
-	&-item {
-		display: block;
-		width: 25px;
-		height: 25px;
-		margin-bottom: 20px;
-		margin-top: 20px;
-		cursor: pointer;
-		opacity: 0;
-		animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
-		
-
-		&:nth-child(1) {
-			background: url("../img/whatsapp-g.png");
-			background-size: 80%;
-			background-position: center;
-			background-repeat: 	no-repeat;
-			&::before {
-				content: "";
-				background:  url("../img/whatsapp.png");
-			}
-		}
-
-		&:nth-child(2) {
-			background: url("../img/instagram-g.png");
-			background-size: 80%;
-			background-position: center;
-			background-repeat: 	no-repeat;
-			&::before {
-				content: "";
-				background: url("../img/instagram.png");
-			}
-		}
-		&:nth-child(3) {
-			background: url("../img/telegram-g.png");
-			background-size: 80%;
-			background-position: center;
-			background-repeat: 	no-repeat;
-			&::before {
-				content: "";
-				background:  url("../img/telegram.png");
-			}
-		}
-
-		&:nth-child(1):hover {
-			background: url("../img/whatsapp.png");
-			background-size: contain;
-			background-position: center;
-			background-repeat: 	no-repeat;
-		}
-
-		&:nth-child(2):hover {
-			background: url("../img/instagram.png");
-			background-size: contain;
-			background-position: center;
-			background-repeat: 	no-repeat;
-		}
-		&:nth-child(3):hover {
-			background: url("../img/telegram.png");
-			background-size: contain;
-			background-position: center;
-			background-repeat: 	no-repeat;
+	&.dark-bg {
+		&::before, &::after {
+			background: #fff;
 		}
 	}
 
+	&::before {
+		content: "";
+		width: 2px;
+		height: 100px;
+		background: @grayColor;
+		position: absolute;
+		left: 30px;
+		z-index: 5;
+		opacity: 0;
+		animation: opacity-obj 1s ease 2s forwards;
+	}
+
+	&::after {
+		content: "";
+		width: 2px;
+		height: ~"calc(100% - 246px)";
+		background: @grayColor;
+		position: absolute;
+		top: 246px;
+		left: 30px;
+		z-index: 5;
+		opacity: 0;
+		animation: opacity-obj 1s ease 2s forwards;
+	}
+
+}
+
+.social {
+	padding: 0 10px;
+	position: absolute;
+	top: 100px;
+	left: 10px;
+	z-index: 10;	
+	width: 22px;
+	opacity: 0;
+	animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
+
+	&.dark-bg {
+		.social-item {
+			fill: #fff;
+		}
+	}
+
+	&-item {
+		display: block;
+		width: 22px;
+		height: 22px;
+		margin-bottom: 20px;
+		margin-top: 20px;
+		cursor: pointer;
+		fill: #CFCFCF;
+		transition: all 0.3s;
+
+		&:hover {
+			fill: @redColor;
+			transform: scale(1.2);
+		}		
+	}
 }
 
 .header {
@@ -115,6 +112,19 @@ br::selection, {
 	z-index: 20;
 	cursor: pointer;
 
+	&.dark-bg {
+		.header-menu {
+			span {
+				background: #fff;
+				transition: none;
+			}
+		}
+
+		.header-name {
+			color: #fff;
+		}
+	}
+
 	&-menu {
 		span {
 			display: block;
@@ -125,6 +135,9 @@ br::selection, {
 
 			&:nth-child(1) {
 				width: 10px;
+				transition: all 1s;
+			}
+			&:nth-child(2) {
 				transition: all 1s;
 			}
 			&:nth-child(3) {
@@ -153,12 +166,33 @@ br::selection, {
 	}
 }
 
+
+.bg {
+	background: #000;
+	width: 50%;
+	height: 100vh;
+	opacity: 0;
+	position: absolute;
+	display: none;
+	z-index: 15;
+	pointer-events: none;
+
+	&.show {
+		display: block;
+		animation: opacity-obj-2 1s;
+	}
+	&.hide {	
+		display: block;		
+		animation: opacity-obj-0 1s;
+	}
+}
+
 .popup-menu {
 	width: 50%;
 	position: absolute;
 	padding: 15% ~"calc((50vw - 340px)/2 - 60px)" 30px;
 	background: #fff;
-	height: 100%;
+	height: 100vh;
 	box-sizing: border-box;
 	z-index: 20;
 	display: flex;
@@ -166,6 +200,7 @@ br::selection, {
 	align-items: flex-end;
 	box-shadow: 10px 0px 30px -6px #343434;
 	display: none;
+
 
 	.menu-links {
 		align-self: flex-start;
@@ -180,6 +215,9 @@ br::selection, {
 			position: relative;
 			margin-bottom: 50px;
 
+			&.active::before {
+				width: 100%;
+			}
 			
 			&::before {
 				content: "";
@@ -219,33 +257,200 @@ br::selection, {
 
 }
 
-.block-introduction {
+.block {
 	display: flex;
 	width: 100%;
 	height: 100vh;
 
 	&>div {
+		// min-width: 50%;
 		width: 50%;
+	}
+
+	&-works {
+
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		.left {
+			// display: grid;
+			// grid-template-columns: repeat(6, 1fr);
+			// grid-template-rows: 50px 250px 150px 70px 50px repeat(3, 30px);
+			// padding: 80px 5%;
+			display: block;
+			// flex-wrap: wrap;
+			width: 40%;
+			margin: 0 auto;
+			padding-top: 70px;
+			
+			.title, .subtitle {
+				// grid-column: 1 / span 9;
+				width: 100%;	
+				text-align: center;	
+				margin-bottom: 50px;	
+				font-weight: 700;	
+				opacity: 0;
+				animation: opacity-obj 2s ease 1s forwards, up-text-1 2s ease 0.5s forwards;
+			} 
+
+			.skills {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				opacity: 0;
+				animation: opacity-obj 2s ease 2s forwards, up-text 2s ease 2s forwards;
+				
+				& > figure {
+					width: 33.3%;
+					position: relative;	
+					margin-bottom: 30px;
+
+
+					&:nth-of-type(1) {
+						.outer {
+							animation: percent90 2s ease-out 2s;
+							stroke-dashoffset: 80;
+						}
+					}
+
+					&:nth-of-type(2) {
+						.outer {
+							animation: percent70 2s ease-out 2s;
+							stroke-dashoffset: 160;
+						}
+					}
+
+					&:nth-of-type(3) {
+						.outer {
+							animation: percent50 2s ease-out 2s;
+							stroke-dashoffset: 210;
+						}
+					}
+					&:nth-of-type(4) {
+						.outer {
+							animation: percent50 2s ease-out 2s;
+							stroke-dashoffset: 210;
+						}
+					}
+					&:nth-of-type(5) {
+						.outer {
+							animation: percent50 2s ease-out 2s;
+							stroke-dashoffset: 210;
+						}
+					}
+					&:nth-of-type(6) {
+						.outer {
+							animation: percent50 2s ease-out 2s;
+							stroke-dashoffset: 210;
+						}
+					}
+
+				}
+			}
+
+
+			.outer {
+				fill: transparent;
+				stroke: @redColor;
+				stroke-width: 5px;
+				stroke-dasharray: 440;
+				transition: stroke-dashoffset 1.5s ease-out;
+				-webkit-animation-play-state: running;				
+			}
+
+			.inner {
+				stroke: #f0f0f0;
+				stroke-width: 5px;
+				stroke-dasharray: 440;
+				fill: transparent;
+			}
+
+			.chart figcaption {
+				padding: 50px 25px;
+				width: 100px;
+				line-height: 50px;
+				text-align: center;
+				font-size: 1.33em;
+				// font-weight: 700;
+				margin: 0 auto;
+
+
+			}
+
+			.chart svg {
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			.chart:hover .outer {
+				stroke-dashoffset: 440 !important;
+				-webkit-animation-play-state: paused;
+			}
+
+			.subtitle {
+				margin-top: 60px;
+			}
+
+			.sites-list {
+				ul {
+					list-style: none;
+					display: flex;
+					justify-content: space-between;
+					flex-wrap: wrap;
+					padding-left: 20px;
+					opacity: 0;
+					animation: opacity-obj 2s ease 2s forwards, up-text 2s ease 2s forwards;
+
+					li {
+						width: 46%;
+						margin-bottom: 20px;
+						box-sizing: border-box;
+						transition: all 0.5s;
+
+						a {
+							text-decoration: none;
+							color: black;
+							position: relative;
+							border-bottom: 1px dotted red;
+						}						
+
+						&::before {
+							content: "\25CF";
+							margin-right: 10px;
+							margin-left: -20px;
+							color: @grayColor;
+
+						}
+
+						&:hover {
+							transform: translateX(10px);
+							a {
+								border-color: transparent;
+							}
+							&::before {
+								content: "\27A4";
+								font-size: 0.8em;		
+							}			
+						}
+					}
+				}
+			}
+
+		}
+
+
 	}
 }
 
-.right {
+.left {
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	&::before {
-		content: "";
-		width: 2px;
-		height: 100%;
-		background: @grayColor;
-		position: absolute;
-		left: 30px;
-		z-index: -1;
-		opacity: 0;
-		animation: opacity-obj 1s ease 2s forwards;
-	}
 
 
 	.content {
@@ -362,7 +567,7 @@ br::selection, {
 	}
 }
 
-.left {
+.right {
 	overflow: hidden;
 	display: flex;
 	align-items: center;
@@ -372,6 +577,11 @@ br::selection, {
 	img {
 		height: 100%;
 		animation: mainImg 2s ease-out 1s; 
+
+		.block-works & {		
+			transform: scale(1.2);	
+			animation: mainImg 2s ease-out forwards; 
+		}
 
 	}
 
@@ -384,8 +594,13 @@ br::selection, {
 		left: 0;
 		animation: coverImg 2s linear forwards 1s;
 		pointer-events: none;
+
+		.block-works & {			
+			animation: coverImg 2s linear forwards;
+		}
 	}
 }
+
 
 
 
@@ -439,19 +654,19 @@ br::selection, {
 
 	}
 
-	.block-introduction {
+	.block { 
 		height: auto;
 		flex-wrap: wrap;
 		margin-top: 10px;
 
-		& > div {
+		& > div { 
 			width: 100%;
 			height: 300px;
 		}
 	}
 
 
-	.right {
+	.left {
 		order: 2;
 		margin-bottom: 50px;	
 		&::before {
@@ -503,7 +718,7 @@ br::selection, {
 		}
 	}
 
-	.left {
+	.right {
 
 		.coverImg {
 			width: 110%;
@@ -516,7 +731,7 @@ br::selection, {
 
 
 	@media (min-width: 400px) {
-		.left img {
+		.right img {
 			height: auto;
 			max-width: 100%;
 			max-height: 340px;
