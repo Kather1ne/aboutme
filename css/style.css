@@ -155,6 +155,9 @@ br::selection {
   box-shadow: 10px 0px 30px -6px #343434;
   display: none;
 }
+.page-content.dark-bg .popup-menu {
+  box-shadow: 10px 0px 30px -6px #e4e4e4;
+}
 .popup-menu .menu-links {
   align-self: flex-start;
   font-size: 1.33em;
