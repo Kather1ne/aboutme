@@ -100,5 +100,36 @@
 	to {  stroke-dashoffset: 210; }
 }
 
+@keyframes percent1 {
+	from {  stroke-dashoffset: 284; }
+	to {  stroke-dashoffset: 45; }
+}
+
+@keyframes percent2 {
+	from {  stroke-dashoffset: 284; }
+	to {  stroke-dashoffset: 70; }
+}
+
+@keyframes percent3 {
+	from {  stroke-dashoffset: 284; }
+	to {  stroke-dashoffset: 110; }
+}
+
+@keyframes percent4 {
+	from {  stroke-dashoffset: 284; }
+	to {  stroke-dashoffset: 110; }
+}
+
+@keyframes percent5 {
+	from {  stroke-dashoffset: 284; }
+	to {  stroke-dashoffset: 25; }
+}
+
+@keyframes percent6 {
+	from {  stroke-dashoffset: 284; }
+	to {  stroke-dashoffset: 145; }
+}
+
+
 
 
