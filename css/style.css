@@ -240,27 +240,27 @@ br::selection {
   margin-bottom: 30px;
 }
 .block-works .left .skills > figure:nth-of-type(1) .outer {
-  animation: percent90 2s ease-out 2s;
+  animation: percent11 2s ease-out 2s;
   stroke-dashoffset: 80;
 }
 .block-works .left .skills > figure:nth-of-type(2) .outer {
-  animation: percent70 2s ease-out 2s;
+  animation: percent12 2s ease-out 2s;
   stroke-dashoffset: 110;
 }
 .block-works .left .skills > figure:nth-of-type(3) .outer {
-  animation: percent50 2s ease-out 2s;
+  animation: percent13 2s ease-out 2s;
   stroke-dashoffset: 170;
 }
 .block-works .left .skills > figure:nth-of-type(4) .outer {
-  animation: percent50 2s ease-out 2s;
+  animation: percent14 2s ease-out 2s;
   stroke-dashoffset: 160;
 }
 .block-works .left .skills > figure:nth-of-type(5) .outer {
-  animation: percent50 2s ease-out 2s;
+  animation: percent15 2s ease-out 2s;
   stroke-dashoffset: 60;
 }
 .block-works .left .skills > figure:nth-of-type(6) .outer {
-  animation: percent50 2s ease-out 2s;
+  animation: percent16 2s ease-out 2s;
   stroke-dashoffset: 210;
 }
 .block-works .left .outer {

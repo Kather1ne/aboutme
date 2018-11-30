@@ -85,14 +85,28 @@
 }
 
 
-@keyframes percent90 {
+@keyframes percent11 {
 	from {  stroke-dashoffset: 440; }
 	to {  stroke-dashoffset: 80; }
 }
 
-@keyframes percent70 {
+@keyframes percent12 {
+	from {  stroke-dashoffset: 440; }
+	to {  stroke-dashoffset:110; }
+}
+
+@keyframes percent13 {
+	from {  stroke-dashoffset: 440; }
+	to {  stroke-dashoffset: 170; }
+}
+@keyframes percent14 {
 	from {  stroke-dashoffset: 440; }
 	to {  stroke-dashoffset: 160; }
+}
+
+@keyframes percent15 {
+	from {  stroke-dashoffset: 440; }
+	to {  stroke-dashoffset: 60; }
 }
 
 @keyframes percent50 {
