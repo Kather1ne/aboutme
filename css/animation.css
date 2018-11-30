@@ -109,7 +109,7 @@
 	to {  stroke-dashoffset: 60; }
 }
 
-@keyframes percent50 {
+@keyframes percent16 {
 	from {  stroke-dashoffset: 440; }
 	to {  stroke-dashoffset: 210; }
 }
