@@ -227,3 +227,10 @@
     max-height: 340px;
   }
 }
+@media screen and (min-width: 470px) and (max-width: 1023px) {
+  .page-content {
+    width: 55%;
+    min-width: 470px;
+    margin: 0 auto;
+  }
+}

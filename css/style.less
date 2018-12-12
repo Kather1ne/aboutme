@@ -203,8 +203,8 @@ br::selection, {
 	display: none;
 
 	.page-content.dark-bg & {
-		    box-shadow: 10px 0px 30px -6px #e4e4e4;
-		}
+		box-shadow: 10px 0px 30px -6px #e4e4e4;
+	}
 
 	.menu-links {
 		align-self: flex-start;
@@ -604,3 +604,21 @@ br::selection, {
 		}
 	}
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+	.block > div{
+		&.right {
+			width: 40%;
+		}
+		&.left {
+			width: 60%;
+			.block-works& {
+				width: 50%;
+			}
+		}
+	}
+
+	.header {
+		margin-left: ~'calc((60vw - 340px)/2 - 60px)';
+	}
+} 

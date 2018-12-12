@@ -466,3 +466,17 @@ br::selection {
 .block-works .right .coverImg {
   animation: coverImg 2s linear forwards;
 }
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+  .block > div.right {
+    width: 40%;
+  }
+  .block > div.left {
+    width: 60%;
+  }
+  .block-works.block > div.left {
+    width: 50%;
+  }
+  .header {
+    margin-left: calc((60vw - 340px)/2 - 60px);
+  }
+}
