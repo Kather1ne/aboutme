@@ -106,12 +106,12 @@
 
 @keyframes percent15 {
 	from {  stroke-dashoffset: 440; }
-	to {  stroke-dashoffset: 60; }
+	to {  stroke-dashoffset: 240; }
 }
 
 @keyframes percent16 {
 	from {  stroke-dashoffset: 440; }
-	to {  stroke-dashoffset: 210; }
+	to {  stroke-dashoffset: 290; }
 }
 
 @keyframes percent1 {
