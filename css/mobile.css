@@ -180,11 +180,11 @@
   }
   .block-works .left .skills > figure:nth-of-type(5) .outer {
     animation: percent5 2s ease-out 2s;
-    stroke-dashoffset: 25;
+    stroke-dashoffset: 165;
   }
   .block-works .left .skills > figure:nth-of-type(6) .outer {
     animation: percent6 2s ease-out 2s;
-    stroke-dashoffset: 145;
+    stroke-dashoffset: 185;
   }
   .block-works .left .chart svg {
     width: 100px;
