@@ -13,19 +13,23 @@
 @openSans: 'Open Sans', sans-serif;
 @roboto: 'Roboto', sans-serif;
 @bgFont: 'Frank Ruhl Libre', serif;
-@bgFontVar: 'Playfair Display', serif;
+// @bgFontVar: 'Playfair Display', serif;
+@bgFontVar: 'PT Mono', monospace;
 
 * {
 	margin: 0;
 	padding: 0;
-	font-size: 18px;
 	font-family: @openSans;
 	font-weight: 300;
+	cursor: none;
+	@media screen and (min-width: 768px) {
+		font-size: 0.9375vw;		
+	}
 }
 
 body div::selection,
 body span::selection,
-br::selection, {
+br::selection {
 	background: #000;
 	color: #fff;
 }
@@ -42,30 +46,30 @@ br::selection, {
 		}
 	}
 
-	&::before {
-		content: "";
-		width: 2px;
-		height: 100px;
-		background: @grayColor;
-		position: absolute;
-		left: 30px;
-		z-index: 5;
-		opacity: 0;
-		animation: opacity-obj 1s ease 2s forwards;
-	}
+	// &::before {
+	// 	content: "";
+	// 	width: 2px;
+	// 	height: 100px;
+	// 	background: @grayColor;
+	// 	position: absolute;
+	// 	left: 30px;
+	// 	z-index: 5;
+	// 	opacity: 0;
+	// 	animation: opacity-obj 1s ease 2s forwards;
+	// }
 
-	&::after {
-		content: "";
-		width: 2px;
-		height: ~"calc(100% - 246px)";
-		background: @grayColor;
-		position: absolute;
-		top: 246px;
-		left: 30px;
-		z-index: 5;
-		opacity: 0;
-		animation: opacity-obj 1s ease 2s forwards;
-	}
+	// &::after {
+	// 	content: "";
+	// 	width: 2px;
+	// 	height: ~"calc(100% - 246px)";
+	// 	background: @grayColor;
+	// 	position: absolute;
+	// 	top: 246px;
+	// 	left: 30px;
+	// 	z-index: 5;
+	// 	opacity: 0;
+	// 	animation: opacity-obj 1s ease 2s forwards;
+	// }
 
 }
 
@@ -103,15 +107,11 @@ br::selection, {
 }
 
 .header {
-	margin-left: ~"calc((50vw - 340px)/2 - 60px)";
-	margin-top: 30px;
-	display: flex;
-	align-items: top;
+	left: ~"calc((50vw - 340px)/2 - 60px)";
+	top: 30px;
 	position: absolute;
-	opacity: 0;
-	animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
-	z-index: 20;
-	cursor: pointer;
+	cursor: pointer;	
+	background: #fff;
 
 	&.dark-bg {
 		.header-menu {
@@ -162,8 +162,32 @@ br::selection, {
 	}
 
 	&-name {
-		margin-left: 50px;
 		font-weight: 700;
+		transition: color 0.3s;
+		cursor: pointer;		
+		& > div, span {
+			font-weight: inherit;
+			display: inline;
+			.name__attr {
+				color: @redColor;
+			}
+
+		}
+		.name__helper:hover {
+			color: @redColor;
+		}
+		.name__info {
+			display: inline-flex;
+			width: 26.6vw;
+			white-space: nowrap;
+			overflow: hidden;
+			transition: width 0.35s ease-in;
+			cursor: pointer;
+
+			&.closed {
+				width: 0;
+			}
+		}
 	}
 }
 
@@ -186,6 +210,12 @@ br::selection, {
 		display: block;		
 		animation: opacity-obj-0 1s;
 	}
+}
+
+.canvas-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .popup-menu {
@@ -458,12 +488,14 @@ br::selection, {
 
 	.content {
 
-		width: 370px;		
+		width: 370px;	
+		background: white;
+		z-index: 1;
+		padding: 10px;	
 
 		.text-bg {
 			font-size: @bigFsz;
 			font-family: @bgFontVar;
-			opacity: 0.05;
 			margin-left: -50px;
 			z-index: -1;
 			white-space: nowrap;
@@ -472,6 +504,8 @@ br::selection, {
 				font: inherit;
 				display: inline-block;
 				opacity: 0;
+				background: white;
+				padding: 0 10px;
 			}
 
 			.left-tx {
@@ -485,6 +519,11 @@ br::selection, {
 			}
 		}
 
+		.colorfull {
+			color: @redColor;
+			display: block;
+		}
+
 		.title {
 			position: relative;
 			font-size: @lgFsz;
@@ -496,13 +535,6 @@ br::selection, {
 				font-size: 1em;
 				font: inherit;
 			}
-
-
-			.colorfull {
-				color: @redColor;
-				display: block;
-			}
-
 			.text-up {
 				display: inline-block;
 				opacity: 0;
@@ -524,51 +556,84 @@ br::selection, {
 			margin-bottom: 50px;
 			opacity: 0;
 			animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
-
-			.hello {
-				margin-bottom: 10px;
-				font-size: 1em;
-				display: block;
-			}
 		}
 
-		.button {
-			background: @redColor;
-			width: 50px;
-			height: 50px;
-			text-align: center;
-			border-radius: 25px;
-			box-shadow: 0px 5px 15px -5px @darkRedColor;
+		
+		.mylinks {
+			
+			
 			cursor: pointer;
 			transition: all 1s ease;
 			opacity: 0;
-			animation: opacity-obj 1s ease 2s forwards, mainImg 1s ease 2s forwards;
-
+			animation: opacity-obj 1s ease 2s forwards;
+			display: inline-flex;
+			background: white;
+			padding: 30px;
+			
+			.mylinks__helper {
+				position: relative;
+				color: black;
+				display: inline-flex;
+				text-transform: uppercase;
+			
+			&::before, &::after {
+				display: block;
+				content: 'Посмотреть фокусы';
+				text-transform: uppercase;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				opacity: .8;
+			} 
 			&::after {
-				content: "\027A4";
-				font-size: 20px;
-				color: #fff;
-				line-height: 50px;
-				padding-left: 5px;				
+				color: @grayColor;
+				z-index: -2;
+			} 
+			&::before {
+				color: @redColor;
+				z-index: -1;
 			}
-
 			&:hover {
-				width: 300px;
-
+				&::before {
+					animation: glitch .5s cubic-bezier(.25, .46, .45, .94) both 3
+				}
 				&::after {
-					content: "Продолжим знакомство?";
-					font-size: 1em;
-					color: #fff;
-					line-height: 50px;
-					padding-left: 5px;	
-					opacity: 0;
-					font-weight: 600;
-					animation: buttonOpen 1s ease forwards, opacity-obj 1s ease forwards;				
+					animation: glitch .5s cubic-bezier(.25, .46, .45, .94) reverse both 4
 				}
 			}
 		}
+
+			
+		
+
+			// &::after {
+			// 	content: "\027A4";
+			// 	font-size: 20px;
+			// 	color: #fff;
+			// 	line-height: 50px;
+			// 	padding-left: 5px;				
+			// }
+
+			// &:hover {
+			// 	width: 300px;
+
+			// 	&::after {
+			// 		content: "Продолжим знакомство?";
+			// 		font-size: 1em;
+			// 		color: #fff;
+			// 		line-height: 50px;
+			// 		padding-left: 5px;	
+			// 		opacity: 0;
+			// 		font-weight: 600;
+			// 		animation: buttonOpen 1s ease forwards, opacity-obj 1s ease forwards;				
+			// 	}
+			// }
+		}
 	}
 }
+
 
 .right {
 	overflow: hidden;
@@ -602,6 +667,19 @@ br::selection, {
 			animation: coverImg 2s linear forwards;
 		}
 	}
+}
+
+.image-cursor {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	mix-blend-mode: difference;
+	pointer-events: none;
+	z-index: 1000;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1200px) {
