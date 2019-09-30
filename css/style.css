@@ -260,11 +260,11 @@ br::selection {
 }
 .block-works .left .skills > figure:nth-of-type(5) .outer {
   animation: percent15 2s ease-out 2s;
-  stroke-dashoffset: 60;
+  stroke-dashoffset: 240;
 }
 .block-works .left .skills > figure:nth-of-type(6) .outer {
   animation: percent16 2s ease-out 2s;
-  stroke-dashoffset: 210;
+  stroke-dashoffset: 290;
 }
 .block-works .left .outer {
   fill: transparent;
