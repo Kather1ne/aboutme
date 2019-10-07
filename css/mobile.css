@@ -35,12 +35,13 @@
     margin-top: 20px;
   }
   .header {
-    margin-top: 15px;
-    margin-left: 5%;
+    margin: 0 5%;
     width: 90%;
     top: 0;
     left: 0;
     font-size: 15px;
+    padding: 7px 0 8px;
+    box-sizing: border-box;
   }
   .header-name {
     width: 100%;
@@ -76,6 +77,9 @@
   }
   .block > div {
     width: 100%;
+    height: auto;
+  }
+  .block .right {
     height: 360px;
   }
   .left {
@@ -190,11 +194,11 @@
   }
   .block-works .left .skills > figure:nth-of-type(5) .outer {
     animation: percent5 2s ease-out 2s;
-    stroke-dashoffset: 165;
+    stroke-dashoffset: 25;
   }
   .block-works .left .skills > figure:nth-of-type(6) .outer {
     animation: percent6 2s ease-out 2s;
-    stroke-dashoffset: 185;
+    stroke-dashoffset: 145;
   }
   .block-works .left .chart svg {
     width: 100px;
