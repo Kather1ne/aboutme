@@ -27,6 +27,16 @@
 	}
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.attr {
+	color: @redColor;
+	font-weight: 700;
+}
+
 body div::selection,
 body span::selection,
 br::selection {
@@ -168,9 +178,7 @@ br::selection {
 		& > div, span {
 			font-weight: inherit;
 			display: inline;
-			.name__attr {
-				color: @redColor;
-			}
+			
 
 		}
 		.name__helper:hover {
@@ -390,8 +398,7 @@ br::selection {
 				stroke: @redColor;
 				stroke-width: 5px;
 				stroke-dasharray: 440;
-				transition: stroke-dashoffset 1.5s ease-out;
-				-webkit-animation-play-state: running;				
+				transition: stroke-dashoffset 1.5s ease-out;			
 			}
 
 			.inner {
@@ -422,7 +429,6 @@ br::selection {
 
 			.chart:hover .outer {
 				stroke-dashoffset: 440 !important;
-				-webkit-animation-play-state: paused;
 			}
 
 			.subtitle {
@@ -488,10 +494,10 @@ br::selection {
 
 	.content {
 
-		width: 370px;	
+		width: 50%;	
 		background: white;
 		z-index: 1;
-		padding: 10px;	
+		padding: 10px;
 
 		.text-bg {
 			font-size: @bigFsz;
@@ -553,7 +559,6 @@ br::selection {
 		.intro {
 			font-size: 1em;
 			margin-top: 30px;
-			margin-bottom: 50px;
 			opacity: 0;
 			animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
 		}
@@ -562,76 +567,54 @@ br::selection {
 		.mylinks {
 			
 			
-			cursor: pointer;
-			transition: all 1s ease;
+			
 			opacity: 0;
 			animation: opacity-obj 1s ease 2s forwards;
+			padding: 30px 30px 30px 0;
+			text-transform: uppercase;
 			display: inline-flex;
-			background: white;
-			padding: 30px;
+			font-weight: 700;
+
+			span {
+				cursor: pointer;
+			}
+
+			&:hover {
+				color: red;
+				transition: color 0.3s ease-in;
+				.mylinks__helper {
+					color: black;
+				}
+			}
 			
 			.mylinks__helper {
 				position: relative;
-				color: black;
+				color: white;
 				display: inline-flex;
-				text-transform: uppercase;
+				transition: color 0.3s ease-in; 
+				margin-left: 5px;		
 			
-			&::before, &::after {
-				display: block;
-				content: 'Посмотреть фокусы';
-				text-transform: uppercase;
-				position: absolute;
-				top: 0;
-				left: 0;
-				height: 100%;
-				width: 100%;
-				opacity: .8;
-			} 
-			&::after {
-				color: @grayColor;
-				z-index: -2;
-			} 
-			&::before {
-				color: @redColor;
-				z-index: -1;
-			}
-			&:hover {
-				&::before {
-					animation: glitch .5s cubic-bezier(.25, .46, .45, .94) both 3
-				}
-				&::after {
-					animation: glitch .5s cubic-bezier(.25, .46, .45, .94) reverse both 4
-				}
-			}
-		}
-
-			
-		
-
-			// &::after {
-			// 	content: "\027A4";
-			// 	font-size: 20px;
-			// 	color: #fff;
-			// 	line-height: 50px;
-			// 	padding-left: 5px;				
-			// }
-
-			// &:hover {
-			// 	width: 300px;
-
-			// 	&::after {
-			// 		content: "Продолжим знакомство?";
-			// 		font-size: 1em;
-			// 		color: #fff;
-			// 		line-height: 50px;
-			// 		padding-left: 5px;	
-			// 		opacity: 0;
-			// 		font-weight: 600;
-			// 		animation: buttonOpen 1s ease forwards, opacity-obj 1s ease forwards;				
-			// 	}
-			// }
 		}
 	}
+
+	.links {
+		height: auto;
+		overflow: hidden;
+		max-height: 0;
+		transition:  max-height 0.55s ease-out;
+		a {
+			margin-bottom: 10px;
+			display: block;
+			.tag {
+				font-weight: 700;
+			}
+		}
+		&.open {
+			max-height: 350px;
+			transition:  max-height 0.45s ease-in;
+		}
+	}
+}
 }
 
 
@@ -670,16 +653,38 @@ br::selection {
 }
 
 .image-cursor {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background: white;
+	// width: 10px;
+	// height: 10px;
+	// border-radius: 100%;
+	// background: white;
 	position: absolute;
 	top: 0;
 	left: 0;
 	mix-blend-mode: difference;
 	pointer-events: none;
 	z-index: 1000;
+	// transition: width 0.3s ease-in, height 0.3s ease-in;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		// padding: 3px 0 0 3px;
+		transform-origin: 50%;
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background: white;
+		top: 0;
+		left: 0;
+		transition: transform 0.3s ease-in;
+		// mix-blend-mode: difference;
+	}
+
+	&.big::before {
+		// width: 60px;
+		// height: 60px;
+		transform: scale(4);
+	}
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1200px) {

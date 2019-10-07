@@ -8,10 +8,18 @@
   font-weight: 300;
   cursor: none;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   * {
     font-size: 0.9375vw;
   }
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.attr {
+  color: #F44336;
+  font-weight: 700;
 }
 body div::selection,
 body span::selection,
@@ -106,10 +114,6 @@ br::selection {
 .header-name span {
   font-weight: inherit;
   display: inline;
-}
-.header-name > div .name__attr,
-.header-name span .name__attr {
-  color: #F44336;
 }
 .header-name .name__helper:hover {
   color: #F44336;
@@ -279,7 +283,6 @@ br::selection {
   stroke-width: 5px;
   stroke-dasharray: 440;
   transition: stroke-dashoffset 1.5s ease-out;
-  -webkit-animation-play-state: running;
 }
 .block-works .left .inner {
   stroke: #f0f0f0;
@@ -303,7 +306,6 @@ br::selection {
 }
 .block-works .left .chart:hover .outer {
   stroke-dashoffset: 440 !important;
-  -webkit-animation-play-state: paused;
 }
 .block-works .left .subtitle {
   margin-top: 5%;
@@ -352,7 +354,7 @@ br::selection {
   justify-content: center;
 }
 .left .content {
-  width: 370px;
+  width: 50%;
   background: white;
   z-index: 1;
   padding: 10px;
@@ -408,50 +410,50 @@ br::selection {
 .left .content .intro {
   font-size: 1em;
   margin-top: 30px;
-  margin-bottom: 50px;
   opacity: 0;
   animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
 }
 .left .content .mylinks {
-  cursor: pointer;
-  transition: all 1s ease;
   opacity: 0;
   animation: opacity-obj 1s ease 2s forwards;
+  padding: 30px 30px 30px 0;
+  text-transform: uppercase;
   display: inline-flex;
-  background: white;
-  padding: 30px;
+  font-weight: 700;
+}
+.left .content .mylinks span {
+  cursor: pointer;
+}
+.left .content .mylinks:hover {
+  color: red;
+  transition: color 0.3s ease-in;
+}
+.left .content .mylinks:hover .mylinks__helper {
+  color: black;
 }
 .left .content .mylinks .mylinks__helper {
   position: relative;
-  color: black;
+  color: white;
   display: inline-flex;
-  text-transform: uppercase;
+  transition: color 0.3s ease-in;
+  margin-left: 5px;
 }
-.left .content .mylinks .mylinks__helper::before,
-.left .content .mylinks .mylinks__helper::after {
+.left .content .links {
+  height: auto;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.55s ease-out;
+}
+.left .content .links a {
+  margin-bottom: 10px;
   display: block;
-  content: 'Посмотреть фокусы';
-  text-transform: uppercase;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: .8;
 }
-.left .content .mylinks .mylinks__helper::after {
-  color: #cecece;
-  z-index: -2;
+.left .content .links a .tag {
+  font-weight: 700;
 }
-.left .content .mylinks .mylinks__helper::before {
-  color: #F44336;
-  z-index: -1;
-}
-.left .content .mylinks .mylinks__helper:hover::before {
-  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 3;
-}
-.left .content .mylinks .mylinks__helper:hover::after {
-  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 4;
+.left .content .links.open {
+  max-height: 350px;
+  transition: max-height 0.45s ease-in;
 }
 .right {
   overflow: hidden;
@@ -482,16 +484,28 @@ br::selection {
   animation: coverImg 2s linear forwards;
 }
 .image-cursor {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: white;
   position: absolute;
   top: 0;
   left: 0;
   mix-blend-mode: difference;
   pointer-events: none;
   z-index: 1000;
+}
+.image-cursor::before {
+  content: '';
+  display: block;
+  position: absolute;
+  transform-origin: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: white;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in;
+}
+.image-cursor.big::before {
+  transform: scale(4);
 }
 @media screen and (min-width: 1024px) and (max-width: 1200px) {
   .block > div.right {

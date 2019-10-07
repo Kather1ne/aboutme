@@ -9,6 +9,9 @@ var content = document.querySelector('.content');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+window.addEventListener('resize', resize, false);
+
+
 
 var drawingPoint = {
     x: 0,
@@ -23,10 +26,12 @@ function init() {
     image = new Image();
     image.onload = handleComplete;
     image.src = "img/bg.png";
-
     stage = new createjs.Stage("window-bg");
+}
 
-
+function resize() {
+    stage.canvas.width = window.innerWidth;
+    stage.canvas.height = window.innerHeight;
 }
 
 rightImage.onmouseenter = function () {
@@ -46,6 +51,11 @@ content.onmouseleave = function () {
 }
 
 function handleComplete() {
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+    canvas.width = width;
+    canvas.height = height;
+
     stage.enableMouseOver();
     stage.enableDOMEvents(true);
 
@@ -53,19 +63,19 @@ function handleComplete() {
     stage.addEventListener('stagemouseup', handleMouseUp);
     stage.addEventListener('stagemousemove', handleMouseMove);
     pointer = new createjs.Shape(new createjs.Graphics().beginFill(0, 0, 0, 1).drawCircle(0, 0, 25));
-    pointer.cache(0, 0, image.width, image.height);
+    pointer.cache(0, 0, canvas.width, canvas.height);
 
     drawingCanvas = new createjs.Shape();
-    drawingCanvas.cache(0, 0, image.width, image.height);
+    drawingCanvas.cache(0, 0, canvas.width, image.height);
 
     bitmap = new createjs.Bitmap(image);
     var bitmapMask = new createjs.AlphaMaskFilter(drawingCanvas.cacheCanvas);
     bitmap.filters = [bitmapMask];
-    bitmap.cache(0, 0, image.width, image.height);
+    bitmap.cache(0, 0, canvas.width, image.height);
 
     color = new createjs.Bitmap(image);
     color.filters = [new createjs.ColorFilter(0, 0, 0, 1, 255, 255, 255, 0)];
-    color.cache(0, 0, image.width, image.height);
+    color.cache(0, 0, canvas.width, image.height);
 
     stage.addChild(color, bitmap);
 
@@ -81,23 +91,16 @@ function handleMouseDown(event) {
 }
 
 function handleMouseMove(event) {
-    // cursor.x = stage.mouseX;
-    // cursor.y = stage.mouseY;
-    // stage.update();
     var width;
+    var scale;
 
     if (onImage) {
-       width = 40;
+        imageCursor.classList.add('big');
     }
     else {
-        width = 10;
+        imageCursor.classList.remove('big');
     }
-    
-    imageCursor.style.width = `${width}px`;
-    imageCursor.style.height = `${width}px`;
-    imageCursor.style.transform = `translate(${stage.mouseX - width/2}px, ${stage.mouseY - width/2}px)`;
-
-
+    imageCursor.style.transform = `translate(${stage.mouseX - 6 }px, ${stage.mouseY  - 6 }px)`;
 }
 
 function handleMouseUp(event) {
@@ -109,12 +112,21 @@ init();
 function tick() {
     var opacity = 0.7;
     var size = 20;
-    // var imageCursorSize = 
 
-    if (isDrawing) {
-        opacity = 0.7;
-        size = 40;
+    if (onImage) {
+        opacity = 0;
     }
+    else {
+        if (isDrawing) {
+            opacity = 0.7;
+            size = 40;
+        }
+        else {
+            size = 20;
+        }
+    }
+
+
     if (
         Math.abs(stage.mouseX - drawingPoint.x) > 0.05 ||
         Math.abs(stage.mouseY - drawingPoint.y) > 0.05
@@ -129,6 +141,7 @@ function tick() {
             x,
             y
         };
+
         if (drawingCanvas) {
             drawingCanvas.graphics
                 .clear()
