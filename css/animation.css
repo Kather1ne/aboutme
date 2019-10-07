@@ -39,12 +39,12 @@
 
 @keyframes bg-text-left {
 	from { transform: translateY(-150px); }
-	to { transform: translateY(0); }
+	to { transform: translateY(-60px); }
 }
 
 @keyframes bg-text-right {
 	from { transform: translateY(150px); }
-	to { transform: translateY(0); }
+	to { transform: translateY(-60px); }
 }
 
 
@@ -145,5 +145,24 @@
 }
 
 
-
+@keyframes glitch {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translate(-3px, 3px);
+	}
+	40% {
+		transform: translate(-3px, -3px);
+	}
+	60% {
+		transform: translate(3px, 3px);
+	}
+	80% {
+		transform: translate(3px, -3px);
+	}
+	to {
+		transform: translate(0);
+	}
+}
 

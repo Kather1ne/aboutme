@@ -13,19 +13,33 @@
 @openSans: 'Open Sans', sans-serif;
 @roboto: 'Roboto', sans-serif;
 @bgFont: 'Frank Ruhl Libre', serif;
-@bgFontVar: 'Playfair Display', serif;
+// @bgFontVar: 'Playfair Display', serif;
+@bgFontVar: 'PT Mono', monospace;
 
 * {
 	margin: 0;
 	padding: 0;
-	font-size: 18px;
 	font-family: @openSans;
 	font-weight: 300;
+	cursor: none;
+	@media screen and (min-width: 768px) {
+		font-size: 0.9375vw;		
+	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.attr {
+	color: @redColor;
+	font-weight: 700;
 }
 
 body div::selection,
 body span::selection,
-br::selection, {
+br::selection {
 	background: #000;
 	color: #fff;
 }
@@ -42,30 +56,30 @@ br::selection, {
 		}
 	}
 
-	&::before {
-		content: "";
-		width: 2px;
-		height: 100px;
-		background: @grayColor;
-		position: absolute;
-		left: 30px;
-		z-index: 5;
-		opacity: 0;
-		animation: opacity-obj 1s ease 2s forwards;
-	}
+	// &::before {
+	// 	content: "";
+	// 	width: 2px;
+	// 	height: 100px;
+	// 	background: @grayColor;
+	// 	position: absolute;
+	// 	left: 30px;
+	// 	z-index: 5;
+	// 	opacity: 0;
+	// 	animation: opacity-obj 1s ease 2s forwards;
+	// }
 
-	&::after {
-		content: "";
-		width: 2px;
-		height: ~"calc(100% - 246px)";
-		background: @grayColor;
-		position: absolute;
-		top: 246px;
-		left: 30px;
-		z-index: 5;
-		opacity: 0;
-		animation: opacity-obj 1s ease 2s forwards;
-	}
+	// &::after {
+	// 	content: "";
+	// 	width: 2px;
+	// 	height: ~"calc(100% - 246px)";
+	// 	background: @grayColor;
+	// 	position: absolute;
+	// 	top: 246px;
+	// 	left: 30px;
+	// 	z-index: 5;
+	// 	opacity: 0;
+	// 	animation: opacity-obj 1s ease 2s forwards;
+	// }
 
 }
 
@@ -103,15 +117,11 @@ br::selection, {
 }
 
 .header {
-	margin-left: ~"calc((50vw - 340px)/2 - 60px)";
-	margin-top: 30px;
-	display: flex;
-	align-items: top;
+	left: ~"calc((50vw - 340px)/2 - 60px)";
+	top: 30px;
 	position: absolute;
-	opacity: 0;
-	animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
-	z-index: 20;
-	cursor: pointer;
+	cursor: pointer;	
+	background: #fff;
 
 	&.dark-bg {
 		.header-menu {
@@ -162,8 +172,30 @@ br::selection, {
 	}
 
 	&-name {
-		margin-left: 50px;
 		font-weight: 700;
+		transition: color 0.3s;
+		cursor: pointer;		
+		& > div, span {
+			font-weight: inherit;
+			display: inline;
+			
+
+		}
+		.name__helper:hover {
+			color: @redColor;
+		}
+		.name__info {
+			display: inline-flex;
+			width: 26.6vw;
+			white-space: nowrap;
+			overflow: hidden;
+			transition: width 0.35s ease-in;
+			cursor: pointer;
+
+			&.closed {
+				width: 0;
+			}
+		}
 	}
 }
 
@@ -186,6 +218,12 @@ br::selection, {
 		display: block;		
 		animation: opacity-obj-0 1s;
 	}
+}
+
+.canvas-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .popup-menu {
@@ -360,8 +398,7 @@ br::selection, {
 				stroke: @redColor;
 				stroke-width: 5px;
 				stroke-dasharray: 440;
-				transition: stroke-dashoffset 1.5s ease-out;
-				-webkit-animation-play-state: running;				
+				transition: stroke-dashoffset 1.5s ease-out;			
 			}
 
 			.inner {
@@ -392,7 +429,6 @@ br::selection, {
 
 			.chart:hover .outer {
 				stroke-dashoffset: 440 !important;
-				-webkit-animation-play-state: paused;
 			}
 
 			.subtitle {
@@ -458,12 +494,14 @@ br::selection, {
 
 	.content {
 
-		width: 370px;		
+		width: 50%;	
+		background: white;
+		z-index: 1;
+		padding: 10px;
 
 		.text-bg {
 			font-size: @bigFsz;
 			font-family: @bgFontVar;
-			opacity: 0.05;
 			margin-left: -50px;
 			z-index: -1;
 			white-space: nowrap;
@@ -472,6 +510,8 @@ br::selection, {
 				font: inherit;
 				display: inline-block;
 				opacity: 0;
+				background: white;
+				padding: 0 10px;
 			}
 
 			.left-tx {
@@ -485,6 +525,11 @@ br::selection, {
 			}
 		}
 
+		.colorfull {
+			color: @redColor;
+			display: block;
+		}
+
 		.title {
 			position: relative;
 			font-size: @lgFsz;
@@ -496,13 +541,6 @@ br::selection, {
 				font-size: 1em;
 				font: inherit;
 			}
-
-
-			.colorfull {
-				color: @redColor;
-				display: block;
-			}
-
 			.text-up {
 				display: inline-block;
 				opacity: 0;
@@ -521,54 +559,64 @@ br::selection, {
 		.intro {
 			font-size: 1em;
 			margin-top: 30px;
-			margin-bottom: 50px;
 			opacity: 0;
 			animation: up-text 0.5s ease 2s forwards, opacity-obj 1s ease 2s forwards;
-
-			.hello {
-				margin-bottom: 10px;
-				font-size: 1em;
-				display: block;
-			}
 		}
 
-		.button {
-			background: @redColor;
-			width: 50px;
-			height: 50px;
-			text-align: center;
-			border-radius: 25px;
-			box-shadow: 0px 5px 15px -5px @darkRedColor;
-			cursor: pointer;
-			transition: all 1s ease;
+		
+		.mylinks {
+			
+			
+			
 			opacity: 0;
-			animation: opacity-obj 1s ease 2s forwards, mainImg 1s ease 2s forwards;
+			animation: opacity-obj 1s ease 2s forwards;
+			padding: 30px 30px 30px 0;
+			text-transform: uppercase;
+			display: inline-flex;
+			font-weight: 700;
 
-			&::after {
-				content: "\027A4";
-				font-size: 20px;
-				color: #fff;
-				line-height: 50px;
-				padding-left: 5px;				
+			span {
+				cursor: pointer;
 			}
 
 			&:hover {
-				width: 300px;
-
-				&::after {
-					content: "Продолжим знакомство?";
-					font-size: 1em;
-					color: #fff;
-					line-height: 50px;
-					padding-left: 5px;	
-					opacity: 0;
-					font-weight: 600;
-					animation: buttonOpen 1s ease forwards, opacity-obj 1s ease forwards;				
+				color: red;
+				transition: color 0.3s ease-in;
+				.mylinks__helper {
+					color: black;
 				}
 			}
+			
+			.mylinks__helper {
+				position: relative;
+				color: white;
+				display: inline-flex;
+				transition: color 0.3s ease-in; 
+				margin-left: 5px;		
+			
+		}
+	}
+
+	.links {
+		height: auto;
+		overflow: hidden;
+		max-height: 0;
+		transition:  max-height 0.55s ease-out;
+		a {
+			margin-bottom: 10px;
+			display: block;
+			.tag {
+				font-weight: 700;
+			}
+		}
+		&.open {
+			max-height: 350px;
+			transition:  max-height 0.45s ease-in;
 		}
 	}
 }
+}
+
 
 .right {
 	overflow: hidden;
@@ -601,6 +649,41 @@ br::selection, {
 		.block-works & {			
 			animation: coverImg 2s linear forwards;
 		}
+	}
+}
+
+.image-cursor {
+	// width: 10px;
+	// height: 10px;
+	// border-radius: 100%;
+	// background: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	mix-blend-mode: difference;
+	pointer-events: none;
+	z-index: 1000;
+	// transition: width 0.3s ease-in, height 0.3s ease-in;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		// padding: 3px 0 0 3px;
+		transform-origin: 50%;
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background: white;
+		top: 0;
+		left: 0;
+		transition: transform 0.3s ease-in;
+		// mix-blend-mode: difference;
+	}
+
+	&.big::before {
+		// width: 60px;
+		// height: 60px;
+		transform: scale(4);
 	}
 }
 
