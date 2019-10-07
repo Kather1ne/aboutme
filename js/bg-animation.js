@@ -1,7 +1,7 @@
 var isDrawing = false;
 var onImage = false;
 var stage;
-
+var moveStart = false;
 var canvas = document.querySelector('#window-bg');
 var imageCursor = document.querySelector('.image-cursor');
 var rightImage = document.querySelector('.right');
@@ -94,6 +94,9 @@ function handleMouseMove(event) {
     var width;
     var scale;
 
+    moveStart = true;
+
+
     if (onImage) {
         imageCursor.classList.add('big');
     }
@@ -142,7 +145,7 @@ function tick() {
             y
         };
 
-        if (drawingCanvas) {
+        if (moveStart) {
             drawingCanvas.graphics
                 .clear()
                 .beginFill("rgba(0,0,0," + opacity + ")")
