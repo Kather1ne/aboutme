@@ -8,7 +8,7 @@ headName.onclick = function () {
     toogleClass(nameInfo, 'closed');
 }
 linksBtn.onclick = function () {
-    toogleClass(links, 'open', 'Смотреть', 'Скрыть');
+    toogleClass(links, 'open', 'Show', 'Close');
     console.log("hi");
 }
 
